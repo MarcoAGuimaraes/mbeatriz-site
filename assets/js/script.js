@@ -2,7 +2,7 @@ const hora = new Date().getHours();
 
 const hero = document.querySelector('.hero');
 
-if(hora >= 0 && hora < 18){
+if(hora >= 6 && hora < 18){
 
     hero.style.background = `
     linear-gradient(
