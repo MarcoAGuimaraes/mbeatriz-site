@@ -1,29 +1,32 @@
-const hora = new Date().getHours();
+// assets/js/script.js
 
-const hero = document.querySelector('.hero');
+const reveals = document.querySelectorAll(".reveal");
 
-if(hora >= 6 && hora < 18){
+function revealOnScroll() {
 
-    hero.style.background = `
-    linear-gradient(
-        rgba(8,18,32,0.40),
-        rgba(8,18,32,0.45)
-    ),
-    url('assets/img/dia.webp')
-    `;
+  const triggerBottom =
+    window.innerHeight * 0.90;
 
-}else{
+  reveals.forEach((element) => {
 
-    hero.style.background = `
-    linear-gradient(
-        rgba(8,18,32,0.70),
-        rgba(8,18,32,0.75)
-    ),
-    url('assets/img/noite.webp')
-    `;
+    const rect =
+      element.getBoundingClientRect();
+
+    if (rect.top < triggerBottom) {
+
+      element.classList.add("active");
+    }
+
+  });
 
 }
 
-hero.style.backgroundSize = "cover";
-hero.style.backgroundPosition = "center";
-hero.style.backgroundRepeat = "no-repeat";
+window.addEventListener(
+  "scroll",
+  revealOnScroll
+);
+
+window.addEventListener(
+  "load",
+  revealOnScroll
+);
